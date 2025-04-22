@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FOMS</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #fdf6e3;
+      line-height: 1.6;
+    }
+
+    /* Navigation Bar */
+    .navbar {
+      background-color: #B22222;
+      padding: 12px 20px;
+      color: white;
+    }
+
+    /* Navbar Container */
+    .nav-container {
+      max-width: 1200px;
+      margin: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: relative;
+    }
+
+    /* Logo */
+    .logo {
+      font-size: 22px;
+      font-weight: bold;
+      color: white;
+      text-decoration: none;
+    }
+
+    /* Navigation Menu */
+    .nav-menu {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+    }
+
+    .nav-menu li {
+      display: inline-block;
+    }
+
+    .nav-link {
+      color: white;
+      text-decoration: none;
+      font-size: 16px;
+      padding: 8px 12px;
+      transition: color 0.3s;
+    }
+
+    .nav-link:hover {
+      color: white;
+      font-weight: 510;
+    }
+
+    /* Navigation Buttons (Sign In) */
+    .nav-buttons {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      position: relative;
+    }
+
+    /* Sign In Button */
+    .nav-buttons .btn {
+      background-color: white;
+      color: #B22222;
+      border: 2px solid white;
+      font-size: 16px;
+      font-weight: bold;
+      padding: 8px 14px;
+      border-radius: 5px;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .nav-buttons .btn:hover {
+      background-color: #B22222;
+      color: white;
+      border-color: white;
+    }
+
+    /* Hidden Login Form */
+    .login-form {
+      display: none;
+      position: absolute;
+      top: 50px;
+      right: 0;
+      background: white;
+      padding: 15px;
+      border-radius: 5px;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+      width: 250px;
+      z-index: 1000;
+    }
+
+    .login-form input {
+      width: 100%;
+      padding: 8px;
+      margin: 5px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .login-form button {
+      width: 100%;
+      background-color: #B22222;
+      color: white;
+      padding: 8px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    .login-form button:hover {
+      background-color: #8B1A1A;
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav class="navbar">
+    <div class="nav-container">
+      <!-- Left Side: Logo -->
+      <a href="#" class="logo">FoodOrder</a>
+
+      <!-- Right Side: Navigation Menu & Sign In -->
+      <div class="nav-buttons">
+        <ul class="nav-menu">
+          <li><a href="product.html" class="nav-link">Menu</a></li>
+          <li><a href="confirmation.html" class="nav-link">Order</a></li>
+          <li><a href="cart.html" class="nav-link">Cart</a></li>
+        </ul>
+
+        <!-- Log Out Button functionality in "LoadNavbar.js" -->
+
+        <button id="toggle-login" class="btn">Login</button>
+
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

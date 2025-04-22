@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart</title>
+    <link rel="stylesheet" href="cartstyles.css">
+
+</head>
+
+<body>
+    <div id="navbar"></div>
+    <div class="parent-cart">
+        <div class="cart-container">
+            <h2>Your Cart</h2>
+            <ul id="cartItems"></ul>
+            <div class="total-clear-container">
+                <div class="total" id="totalPrice">Total: ₹0</div>
+                <button id="clearCartButton">Clear</button>
+            </div>
+            <div class="checkout-container">
+                <button id="placeOrderButton">Proceed to Checkout</button>
+                <a href="product.html" class="continue-shopping">Continue Shopping</a>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="loadNavbar.js"></script>
+    <script type="module" src="cart.js"></script>
+
+</body>
+</html>

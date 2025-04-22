@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FOMS</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #fdf6e3;
+      color: #333;
+    }
+
+    .navbar {
+      background-color: #B22222;
+      padding: 14px 20px;
+      color: white;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+      text-decoration: none;
+      color: white;
+      letter-spacing: 1px;
+    }
+
+    .nav-menu {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+    }
+
+    .nav-link {
+      color: white;
+      text-decoration: none;
+      font-size: 16px;
+      padding: 8px 12px;
+      border-radius: 5px;
+      transition: background 0.3s ease;
+    }
+
+    .nav-link:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    .nav-buttons {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      position: relative;
+    }
+
+    .btn {
+      background-color: white;
+      color: #B22222;
+      border: none;
+      font-size: 15px;
+      padding: 8px 16px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: all 0.3s ease;
+    }
+
+    .btn:hover {
+      background-color: #8B1A1A;
+      color: white;
+    }
+
+    .login-form {
+      position: absolute;
+      top: 50px;
+      right: 0;
+      background: white;
+      padding: 15px;
+      border-radius: 8px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+      width: 260px;
+      z-index: 20;
+      display: none;
+    }
+
+    .login-form input {
+      width: 100%;
+      margin: 8px 0;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .login-form button {
+      background-color: #B22222;
+      color: white;
+      padding: 10px;
+      width: 100%;
+      border: none;
+      border-radius: 5px;
+      margin-top: 10px;
+      cursor: pointer;
+    }
+
+    .login-form button:hover {
+      background-color: #8B1A1A;
+    }
+
+    .landingpage {
+      display: flex;
+      width: 100%;
+      height: 100vh;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .landingpage img {
+      flex: 1;
+      object-fit: cover;
+      transition: transform 0.3s;
+    }
+
+    .landingpage img:hover {
+      transform: scale(1.02);
+    }
+
+    .overlay-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: white;
+      font-size: 3vw;
+      text-align: center;
+      padding: 20px 30px;
+      background: rgba(0, 0, 0, 0.4);
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+      z-index: 5;
+    }
+
+    section {
+      padding: 40px 20px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    h2 {
+      margin-bottom: 20px;
+      color: #B22222;
+    }
+
+    .categories span {
+      display: inline-block;
+      background: #ffd700;
+      padding: 10px 15px;
+      border-radius: 20px;
+      margin: 5px;
+      font-weight: bold;
+    }
+
+    .contact-info,
+    .how-it-works ul,
+    .social-links {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .social-links a {
+      color: #B22222;
+      margin-right: 15px;
+      font-size: 24px;
+    }
+
+    /* google */
+    .google-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background-color: white;
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.3s ease;
+}
+
+.google-btn img {
+  width: 20px;
+  height: 20px;
+}
+
+.google-btn:hover {
+  background-color: #f1f1f1;
+}
+
+  </style>
+</head>
+
+<body>
+  <nav class="navbar">
+    <div class="nav-container">
+      <!-- Left Side: Logo -->
+      <a href="#" class="logo">FoodOrder</a>
+
+      <!-- Right Side: Navigation Menu & Sign In -->
+      <div class="nav-buttons">
+        <ul class="nav-menu">
+          <li><a href="#contact-us" class="nav-link">Contact Us</a></li>
+          <li><a href="admin.html" id="admin-link" class="nav-link">Admin</a></li>
+        </ul>
+
+        <!-- Login/Logout Button -->
+        <button id="toggle-login" class="btn">Login</button>
+      </div>
+    </div>
+
+    <!-- Hidden Login & Signup Form -->
+    <div id="login-form" class="login-form" style="display: none;">
+      <form id="login-section">
+        <input type="email" id="login-email" placeholder="Email" required>
+        <input type="password" id="login-password" placeholder="Password" required>
+        <button type="submit">Sign In</button>
+        <!-- Google Login Button -->
+        <div id="google-login-btn" class="google-btn" onclick="loginWithGoogle()">
+          <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google icon" />
+          <span>Login with Google</span>
+        </div>
+
+        <p>New User? <a href="#" id="show-signup">Create an Account</a></p>
+      </form>
+
+      <!-- Signup Section -->
+      <div id="signup-section" style="display: none;">
+        <input type="text" id="signup-username" placeholder="Username" required>
+        <input type="email" id="signup-email" placeholder="Email" required>
+        <input type="password" id="signup-password" placeholder="Password" required>
+        <button id="signup-btn">Create Account</button>
+        <p>Already have an account? <a href="#" id="show-login">Login</a></p>
+      </div>
+    </div>
+  </nav>
+
+  <div class="landingpage">
+    <img src="landingpage2.jpg" alt="Image 1" />
+    <img src="landingpage1.jpg" alt="Image 2" />
+    <img src="landingpage8.jpg" alt="Image 3" />
+    <img src="landingpage7.jpg" alt="Image 4" />
+    <div class="overlay-text">WELCOME TO FOMS!</div>
+  </div>
+
+  <!-- How It Works Section -->
+  <section style="background-color: #fdfdfd; padding: 60px 20px;">
+    <div style="max-width: 1200px; margin: auto; text-align: center;">
+      <h2 style="font-size: 2.2rem; margin-bottom: 40px; color: #b12704;">How It Works</h2>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 30px;">
+        <div style="background: #ffffff; padding: 25px; border-radius: 16px; box-shadow: 0 4px 10px rgba(0,0,0,0.05);">
+          <h3 style="font-size: 1.3rem;">🍽 Browse Menus</h3>
+          <p>Explore delicious meals from top-rated restaurants.</p>
+        </div>
+        <div style="background: #ffffff; padding: 25px; border-radius: 16px; box-shadow: 0 4px 10px rgba(0,0,0,0.05);">
+          <h3 style="font-size: 1.3rem;">🛒 Place Your Order</h3>
+          <p>Customize your food and pay securely online.</p>
+        </div>
+        <div style="background: #ffffff; padding: 25px; border-radius: 16px; box-shadow: 0 4px 10px rgba(0,0,0,0.05);">
+          <h3 style="font-size: 1.3rem;">📦 Track Your Meal</h3>
+          <p>Follow your food in real time as it’s prepared and delivered.</p>
+        </div>
+        <div style="background: #ffffff; padding: 25px; border-radius: 16px; box-shadow: 0 4px 10px rgba(0,0,0,0.05);">
+          <h3 style="font-size: 1.3rem;">⭐ Enjoy & Review</h3>
+          <p>Enjoy your meal and leave a review to support your favorite chefs!</p>
+        </div>
+      </div>
+
+  </section>
+
+  <!-- Popular Categories Section -->
+  <section style="background-color: #fefefe; padding: 60px 20px;">
+    <div style="max-width: 1000px; margin: auto; text-align: center;">
+      <h2 style="font-size: 2.2rem; margin-bottom: 40px; color: #b12704;">Popular Categories</h2>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 25px;">
+        <div style="background: #fff; padding: 20px; border-radius: 14px; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+          <i class="fas fa-pizza-slice" style="font-size: 30px; color: #e67e22;"></i>
+          <p>Pizza</p>
+        </div>
+        <div style="background: #fff; padding: 20px; border-radius: 14px; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+          <i class="fas fa-hamburger" style="font-size: 30px; color: #d35400;"></i>
+          <p>Burger</p>
+        </div>
+        <div style="background: #fff; padding: 20px; border-radius: 14px; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+          <div style="font-size: 30px;">🥟</div>
+          <p>Momos</p>
+
+
+        </div>
+        <div style="background: #fff; padding: 20px; border-radius: 14px; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+          <i class="fas fa-ice-cream" style="font-size: 30px; color: #c0392b;"></i>
+          <p>Ice Cream</p>
+        </div>
+        <div style="background: #fff; padding: 20px; border-radius: 14px; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+          <i class="fas fa-blender" style="font-size: 30px; color: #884ea0;"></i>
+          <p>Shakes</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Us Section -->
+  <section id="contact-us" style="background-color: #fcfcfc; padding: 60px 20px;">
+    <div style="max-width: 700px; margin: auto; text-align: center;">
+      <h2 style="font-size: 2.2rem; margin-bottom: 30px; color: #b12704;">Contact Us</h2>
+      <p style="font-size: 1.1rem; margin-bottom: 10px;">We're here to help with anything you need!</p>
+      <p><strong>📧 Email:</strong> support@foodorder.co.in</p>
+      <p><strong>📞 Phone:</strong> 97800-123-4567</p>
+      <p><strong>📍 Address:</strong> 10 High Street, India</p>
+    </div>
+  </section>
+
+  <section>
+    <div style="margin-top: 30px; text-align: center;">
+      <a href="#" style="margin: 0 12px; color: #b12704; font-size: 24px;"><i class="fab fa-instagram"></i></a>
+      <a href="#" style="margin: 0 12px; color: #b12704; font-size: 24px;"><i class="fab fa-facebook"></i></a>
+      <a href="#" style="margin: 0 12px; color: #b12704; font-size: 24px;"><i class="fab fa-x-twitter"></i></a>
+    </div>
+    </div>
+  </section>
+
+
+  <script type="module" src="index.js"></script>
+  <script type="module" src="firebase-config.js"></script>
+  <script type="module">
+    import { auth, GoogleAuthProvider, signInWithPopup } from "./firebase-config.js";
+  
+    document.getElementById('google-login-btn').addEventListener('click', () => {
+      const provider = new GoogleAuthProvider();
+  
+      signInWithPopup(auth, provider)
+        .then((result) => {
+          console.log("User signed in: ", result.user);
+          window.location.href = 'product.html'; // redirect on success
+        })
+        .catch((error) => {
+          console.error("Login Failed: ", error);
+          alert("Google login failed: " + error.message);
+        });
+    });
+  </script>
+  
+</body>
+
+</html>

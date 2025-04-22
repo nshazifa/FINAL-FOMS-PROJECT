@@ -1,0 +1,37 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+/* Landing Page */
+.landingpage {
+    height: 500px;
+    width: 100%;
+    color: pink;
+    font-size: 24px;
+    text-align: center;
+    line-height: 500px; /* Centers the text vertically */
+    position: relative; /* Ensures text stays on top */
+  }
+  
+.landingpage img{
+  height: 500px;
+}
+
+/* Hide one image on smaller screens */
+@media screen and (max-width: 768px) {
+    .landingpage img:nth-child(4) {
+        display: none; /* Hides the fourth image (landingpage7.jpg) */
+    }
+
+    .landingpage img {
+        max-width: 100%;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .landingpage img:nth-child(3) {
+        display: none; /* Hides the fourth image (landingpage7.jpg) */
+    }
+}
+
